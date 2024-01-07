@@ -1,0 +1,28 @@
+{
+  "name": "bitchat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js --ignore './client/'"
+  },
+  "author": "Rohit Tewari",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "socket.io": "^4.5.3",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
+    "nodemon": "^2.0.20"
+  }
+}
