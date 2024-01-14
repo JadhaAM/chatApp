@@ -10,7 +10,7 @@ const { notFound, errorHandler } = require("./middleware");
 const app = express(); // Use express js in our app
 app.use(cors());
 app.use(express.json()); // Accept JSON data
-dotenv.config({ path: path.join(__dirname, "./.env") }); // Specify a custom path if your file containing environment variables is located elsewhere
+dotenv.config({ path: path.join(__dirname, "./.env.example") }); // Specify a custom path if your file containing environment variables is located elsewhere
 connectToMongoDB(); // Connect to Database
 
 app.use("/api/user", userRoutes);
@@ -38,8 +38,11 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound); // Handle invalid routes
 app.use(errorHandler);
 
+
 const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on PORT ${process.env.PORT}`)
+
+console.log(`Server started on PORT ${process.env.PORT}`)
+
 );
 
 const io = require("socket.io")(server, {
