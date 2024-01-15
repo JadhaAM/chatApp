@@ -1,4 +1,5 @@
 import { ViewIcon } from "@chakra-ui/icons";
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   IconButton,
@@ -16,6 +17,21 @@ import {
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  
+    const updateOnlineStatus = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+  useEffect(() => {
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    return () => {
+      window.removeEventListener('online', updateOnlineStatus);
+      window.removeEventListener('offline', updateOnlineStatus);
+    };
+  }, []);
 
   return (
     <>
@@ -59,6 +75,14 @@ const ProfileModal = ({ user, children }) => {
               alt={user.name}
             />
 
+            {/* user online */}
+            <Text
+              fontSize={{ base: "28px", md: "30px" }}
+              fontFamily="Work sans"
+            >
+              Status:{isOnline ? 'online' : 'offline'}
+            </Text>
+            
             {/* Email Address */}
             <Text
               fontSize={{ base: "28px", md: "30px" }}
