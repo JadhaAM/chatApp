@@ -239,6 +239,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 value={newMessage}
                 onChange={(e) => typingHandler(e)}
               />
+              
             </FormControl>
           </Box>
         </>

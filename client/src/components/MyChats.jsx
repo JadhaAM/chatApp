@@ -82,6 +82,7 @@ const MyChats = ({ fetchAgain }) => {
           >
             New Group Chat
           </Button>
+          
         </GroupChatModal>
       </Box>
 
