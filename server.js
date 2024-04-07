@@ -8,7 +8,13 @@ const { userRoutes, chatRoutes, messageRoutes } = require("./routes");
 const { notFound, errorHandler } = require("./middleware");
 
 const app = express(); // Use express js in our app
-app.use(cors());
+app.use(cors(
+  {
+    origin :{"https://chat99.vercel.app"},
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
 app.use(express.json()); // Accept JSON data
 dotenv.config({ path: path.join(__dirname, "./.env.example") }); // Specify a custom path if your file containing environment variables is located elsewhere
 connectToMongoDB(); // Connect to Database
